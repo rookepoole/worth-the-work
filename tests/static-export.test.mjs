@@ -20,6 +20,8 @@ test("exports the calculator and its conversion path", async () => {
   assert.match(html, /Minimum worth accepting/);
   assert.match(html, /https:\/\/prairiegrantscout\.gumroad\.com\/l\/worth-the-work/);
   assert.match(html, /utm_source=github_pages/);
+  assert.match(html, /google-site-verification/);
+  assert.match(html, /3KQkOn5rdkAvtEkfnpouShjQW5QMP5XCZxt92zt3sYc/);
   assert.match(html, /free-checklist-cta|free_checklist_cta/);
   assert.match(html, /\/worth-the-work\/_next\/static\//);
   assert.match(html, /application\/ld\+json/);

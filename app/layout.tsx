@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://rookepoole.github.io/worth-the-work/",
   },
+  verification: {
+    google: "3KQkOn5rdkAvtEkfnpouShjQW5QMP5XCZxt92zt3sYc",
+  },
   openGraph: {
     type: "website",
     url: "https://rookepoole.github.io/worth-the-work/",
