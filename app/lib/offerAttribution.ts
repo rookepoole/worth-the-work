@@ -9,6 +9,7 @@ const knownReferrers: Array<[RegExp, string]> = [
   [/(^|\.)public\.tools$/i, "public_tools"],
   [/(^|\.)toolcommons\.org$/i, "tool_commons"],
   [/(^|\.)zearches\.com$/i, "zearches"],
+  [/(^|\.)freenosignup\.com$/i, "free_no_signup"],
   [/(^|\.)github\.com$/i, "github_referral"],
   [/(^|\.)google\./i, "organic_search"],
   [/(^|\.)bing\.com$/i, "organic_search"],
