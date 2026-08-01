@@ -49,7 +49,16 @@ jobs:
       - name: Notify IndexNow
         shell: bash
         run: |
-          curl --fail-with-body --retry 3 --get "https://api.indexnow.org/indexnow" \
-            --data-urlencode "url=https://rookepoole.github.io/worth-the-work/" \
-            --data-urlencode "key=e57ce0b65a8245aa8612e10aa870ab1d" \
-            --data-urlencode "keyLocation=https://rookepoole.github.io/worth-the-work/e57ce0b65a8245aa8612e10aa870ab1d.txt"
+          curl --fail-with-body --retry 3 "https://api.indexnow.org/indexnow" \
+            --header "Content-Type: application/json; charset=utf-8" \
+            --data '{
+              "host": "rookepoole.github.io",
+              "key": "e57ce0b65a8245aa8612e10aa870ab1d",
+              "keyLocation": "https://rookepoole.github.io/worth-the-work/e57ce0b65a8245aa8612e10aa870ab1d.txt",
+              "urlList": [
+                "https://rookepoole.github.io/worth-the-work/",
+                "https://rookepoole.github.io/worth-the-work/scope-creep-clause-generator/",
+                "https://rookepoole.github.io/worth-the-work/freelance-revision-cost-calculator/",
+                "https://rookepoole.github.io/worth-the-work/freelance-quote-response-generator/"
+              ]
+            }'

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 
 type ProtectionKey =
   | "writtenScope"
@@ -413,6 +414,34 @@ export default function Home() {
           </article>
         </div>
         <p className="formula-note">Minimum fee = (target rate × expected hours + direct costs) × risk buffer.</p>
+      </section>
+
+      <section className="tools-section" aria-labelledby="free-tools-heading">
+        <div className="section-heading">
+          <p className="kicker">03 / HANDLE THE CONVERSATION</p>
+          <h2 id="free-tools-heading">Free tools for the terms that protect the price.</h2>
+          <p>Turn the calculator result into clearer scope, revision, and negotiation language.</p>
+        </div>
+        <div className="tools-grid">
+          <Link href="/scope-creep-clause-generator/">
+            <span>CLAUSE BUILDER</span>
+            <h3>Scope-creep clause generator</h3>
+            <p>Set revision limits, feedback ownership, extra-round fees, and written change approvals.</p>
+            <strong>Generate the clause →</strong>
+          </Link>
+          <Link href="/freelance-revision-cost-calculator/">
+            <span>PRICING TOOL</span>
+            <h3>Revision cost calculator</h3>
+            <p>Estimate expected revision cost and price an additional round with a consistent buffer.</p>
+            <strong>Price a revision →</strong>
+          </Link>
+          <Link href="/freelance-quote-response-generator/">
+            <span>RESPONSE BUILDER</span>
+            <h3>Quote response generator</h3>
+            <p>Hold the price, reduce scope, phase the work, or decline without negotiating against yourself.</p>
+            <strong>Build a response →</strong>
+          </Link>
+        </div>
       </section>
 
       <section className="kit-section" id="decision-kit">

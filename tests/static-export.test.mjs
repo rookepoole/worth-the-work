@@ -27,3 +27,24 @@ test("exports a usable 404 page and static assets", async () => {
     new URL("e57ce0b65a8245aa8612e10aa870ab1d.txt", outputRoot),
   );
 });
+
+test("exports three distinct conversion-focused utility pages", async () => {
+  const tools = [
+    ["scope-creep-clause-generator/index.html", /Scope Creep Clause Generator/],
+    ["freelance-revision-cost-calculator/index.html", /Freelance Revision Cost Calculator/],
+    ["freelance-quote-response-generator/index.html", /Freelance Quote Response Generator/],
+  ];
+
+  for (const [path, title] of tools) {
+    const html = await readFile(new URL(path, outputRoot), "utf8");
+    assert.match(html, title);
+    assert.match(html, /utm_medium=tool/);
+    assert.match(html, /worth-the-work/);
+    assert.doesNotMatch(html, /â|Ã|Â/);
+  }
+
+  const sitemap = await readFile(new URL("sitemap.xml", outputRoot), "utf8");
+  assert.match(sitemap, /scope-creep-clause-generator/);
+  assert.match(sitemap, /freelance-revision-cost-calculator/);
+  assert.match(sitemap, /freelance-quote-response-generator/);
+});

@@ -11,6 +11,12 @@ browser and are not transmitted or stored.
 ## Live product funnel
 
 - Calculator: https://rookepoole.github.io/worth-the-work/
+- Scope-creep clause generator:
+  https://rookepoole.github.io/worth-the-work/scope-creep-clause-generator/
+- Revision cost calculator:
+  https://rookepoole.github.io/worth-the-work/freelance-revision-cost-calculator/
+- Quote response generator:
+  https://rookepoole.github.io/worth-the-work/freelance-quote-response-generator/
 - Free project red-flag checklist:
   https://prairiegrantscout.gumroad.com/l/freelance-project-red-flag-checklist?utm_source=github&utm_medium=repository&utm_campaign=worth_the_work
 - Editable decision workbook and script library:

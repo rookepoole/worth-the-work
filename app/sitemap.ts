@@ -3,12 +3,17 @@ import type { MetadataRoute } from "next";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date("2026-08-01T00:00:00Z");
+
   return [
-    {
-      url: "https://rookepoole.github.io/worth-the-work/",
-      lastModified: new Date("2026-08-01T00:00:00Z"),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+    ["", 1],
+    ["scope-creep-clause-generator/", 0.9],
+    ["freelance-revision-cost-calculator/", 0.9],
+    ["freelance-quote-response-generator/", 0.9],
+  ].map(([path, priority]) => ({
+    url: `https://rookepoole.github.io/worth-the-work/${path}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: Number(priority),
+  }));
 }
