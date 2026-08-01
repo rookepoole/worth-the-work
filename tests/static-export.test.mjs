@@ -50,9 +50,9 @@ test("classifies acquisition referrers without collecting page inputs", () => {
 
 test("exports three distinct conversion-focused utility pages", async () => {
   const tools = [
-    ["scope-creep-clause-generator/index.html", /Scope Creep Clause Generator/],
-    ["freelance-revision-cost-calculator/index.html", /Freelance Revision Cost Calculator/],
-    ["freelance-quote-response-generator/index.html", /Freelance Quote Response Generator/],
+    ["scope-creep-clause-generator/index.html", /Define the boundary before you need to defend it/],
+    ["freelance-revision-cost-calculator/index.html", /probability × hours × target hourly return/],
+    ["freelance-quote-response-generator/index.html", /If the price changes, another real variable should change too/],
   ];
 
   for (const [path, title] of tools) {
@@ -63,6 +63,9 @@ test("exports three distinct conversion-focused utility pages", async () => {
     assert.match(html, /Open-source MIT code/);
     assert.match(html, /no analytics, cookies, or accounts/i);
     assert.match(html, /EUR — euro/);
+    assert.match(html, /application\/ld\+json/);
+    assert.match(html, /WebApplication/);
+    assert.match(html, /"price":0/);
     assert.doesNotMatch(html, /â|Ã|Â/);
   }
 
