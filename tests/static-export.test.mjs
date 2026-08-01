@@ -11,10 +11,14 @@ test("exports the calculator and its conversion path", async () => {
   assert.match(html, /Minimum worth accepting/);
   assert.match(html, /https:\/\/prairiegrantscout\.gumroad\.com\/l\/worth-the-work/);
   assert.match(html, /\/worth-the-work\/_next\/static\//);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(html, /https:\/\/rookepoole\.github\.io\/worth-the-work\//);
   assert.doesNotMatch(html, /â|Ã|Â/);
 });
 
 test("exports a usable 404 page and static assets", async () => {
   await access(new URL("404.html", outputRoot));
   await access(new URL("_next/static/", outputRoot));
+  await access(new URL("robots.txt", outputRoot));
+  await access(new URL("sitemap.xml", outputRoot));
 });

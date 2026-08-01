@@ -25,6 +25,22 @@ const money = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 0,
 });
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Worth the Work",
+  url: "https://rookepoole.github.io/worth-the-work/",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Any",
+  description:
+    "A free browser-based calculator for evaluating freelance project economics, hidden hours, scope risk, and minimum acceptable fees.",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+};
+
 function NumberField({
   id,
   label,
@@ -171,6 +187,10 @@ export default function Home() {
 
   return (
     <main>
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        type="application/ld+json"
+      />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Worth the Work home">
           <span className="brand-mark">W/W</span>

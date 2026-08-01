@@ -16,6 +16,22 @@ export const metadata: Metadata = {
   title: "Worth the Work — Freelance Project Decision Calculator",
   description:
     "Price hidden hours and client risk before you accept a freelance project. Get a transparent take, counter, or pass decision.",
+  alternates: {
+    canonical: "https://rookepoole.github.io/worth-the-work/",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://rookepoole.github.io/worth-the-work/",
+    title: "Worth the Work — Freelance Project Decision Calculator",
+    description:
+      "Price hidden hours, revisions, scope creep, and client risk before you quote a freelance project.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Worth the Work — Freelance Project Decision Calculator",
+    description:
+      "Get a transparent take, counter, or pass decision for a freelance project.",
+  },
 };
 
 export default function RootLayout({
