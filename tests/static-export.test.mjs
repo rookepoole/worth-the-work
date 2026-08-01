@@ -49,6 +49,7 @@ test("classifies acquisition referrers without collecting page inputs", () => {
   assert.equal(sourceFromReferrer("https://zearches.com/software-saas", "github_pages"), "zearches");
   assert.equal(sourceFromReferrer("https://freenosignup.com/tools/worth-the-work/", "github_pages"), "free_no_signup");
   assert.equal(sourceFromReferrer("https://fossy.dev/rookepoole/worth-the-work", "github_pages"), "fossy");
+  assert.equal(sourceFromReferrer("https://productreveal.online/products/worth-the-work", "github_pages"), "product_reveal");
   assert.equal(sourceFromReferrer("https://github.com/etnbrd/awesome-freelance-fr", "github_pages"), "github_referral");
   assert.equal(sourceFromReferrer("https://example.com/", "github_pages"), "github_pages");
   assert.match(

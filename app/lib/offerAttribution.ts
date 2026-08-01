@@ -11,6 +11,7 @@ const knownReferrers: Array<[RegExp, string]> = [
   [/(^|\.)zearches\.com$/i, "zearches"],
   [/(^|\.)freenosignup\.com$/i, "free_no_signup"],
   [/(^|\.)fossy\.dev$/i, "fossy"],
+  [/(^|\.)productreveal\.online$/i, "product_reveal"],
   [/(^|\.)github\.com$/i, "github_referral"],
   [/(^|\.)google\./i, "organic_search"],
   [/(^|\.)bing\.com$/i, "organic_search"],
