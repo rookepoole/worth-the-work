@@ -55,6 +55,7 @@ test("classifies acquisition referrers without collecting page inputs", () => {
   assert.equal(sourceFromReferrer("https://freenosignup.com/tools/worth-the-work/", "github_pages"), "free_no_signup");
   assert.equal(sourceFromReferrer("https://fossy.dev/rookepoole/worth-the-work", "github_pages"), "fossy");
   assert.equal(sourceFromReferrer("https://curlship.com/", "github_pages"), "curlship");
+  assert.equal(sourceFromReferrer("https://prairiegrantscout.gumroad.com/p/how-to-calculate-your-minimum-freelance-project-fee-without-guessing", "github_pages"), "gumroad_post");
   assert.equal(sourceFromReferrer("https://github.com/etnbrd/awesome-freelance-fr", "github_pages"), "github_referral");
   assert.equal(sourceFromReferrer("https://example.com/", "github_pages"), "github_pages");
   assert.match(
