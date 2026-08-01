@@ -1,12 +1,12 @@
 # Worth the Work
 
-A free, browser-only suite of five freelance pricing tools for evaluating
+A free, browser-only suite of six freelance pricing tools for evaluating
 project economics and client risk before accepting the work.
 
 The calculator estimates expected workload, effective hourly return, risk
 buffer, minimum acceptable fee, suggested deposit, and a practical
 `TAKE` / `GUARDRAIL` / `COUNTER` / `PASS` recommendation. Inputs remain in the
-browser and are not transmitted or stored. All five utilities support USD,
+browser and are not transmitted or stored. All six utilities support USD,
 EUR, GBP, CAD, AUD, and NZD without exchange-rate conversion.
 
 ## Privacy and licensing
@@ -24,6 +24,8 @@ EUR, GBP, CAD, AUD, and NZD without exchange-rate conversion.
 ## Live product funnel
 
 - Calculator: https://rookepoole.github.io/worth-the-work/
+- Project cost calculator:
+  https://rookepoole.github.io/worth-the-work/freelance-project-cost-calculator/
 - Scope-creep clause generator:
   https://rookepoole.github.io/worth-the-work/scope-creep-clause-generator/
 - Revision cost calculator:

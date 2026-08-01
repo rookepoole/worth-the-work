@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ["", 1],
+    ["freelance-project-cost-calculator/", 0.9],
     ["scope-creep-clause-generator/", 0.9],
     ["freelance-revision-cost-calculator/", 0.9],
     ["freelance-quote-response-generator/", 0.9],

@@ -10,6 +10,7 @@ import {
   suggestedMarkupForCompression,
   timelineCompression,
 } from "../app/lib/rushFee.ts";
+import { calculateProjectCost } from "../app/lib/projectCost.ts";
 
 const outputRoot = new URL("../out/", import.meta.url);
 
@@ -62,8 +63,9 @@ test("classifies acquisition referrers without collecting page inputs", () => {
   );
 });
 
-test("exports four distinct conversion-focused utility pages", async () => {
+test("exports five distinct conversion-focused utility pages", async () => {
   const tools = [
+    ["freelance-project-cost-calculator/index.html", /A fixed fee still needs an honest cost model/],
     ["scope-creep-clause-generator/index.html", /Define the boundary before you need to defend it/],
     ["freelance-revision-cost-calculator/index.html", /probability × hours × target hourly return/],
     ["freelance-quote-response-generator/index.html", /If the price changes, another real variable should change too/],
@@ -85,10 +87,31 @@ test("exports four distinct conversion-focused utility pages", async () => {
   }
 
   const sitemap = await readFile(new URL("sitemap.xml", outputRoot), "utf8");
+  assert.match(sitemap, /freelance-project-cost-calculator/);
   assert.match(sitemap, /scope-creep-clause-generator/);
   assert.match(sitemap, /freelance-revision-cost-calculator/);
   assert.match(sitemap, /freelance-quote-response-generator/);
   assert.match(sitemap, /freelance-rush-fee-calculator/);
+});
+
+test("project estimator protects labor, direct costs, contingency, and margin", () => {
+  const result = calculateProjectCost({
+    deliveryHours: 28,
+    discoveryHours: 4,
+    adminHours: 6,
+    targetHourlyRate: 100,
+    directCosts: 200,
+    contingencyPercent: 15,
+    operatingMarginPercent: 20,
+    depositPercent: 40,
+  });
+
+  assert.equal(result.totalHours, 38);
+  assert.equal(result.laborValue, 3800);
+  assert.equal(result.protectedCost, 4600);
+  assert.equal(result.recommendedQuote, 5750);
+  assert.equal(result.operatingMarginAmount, 1150);
+  assert.equal(result.deposit, 2300);
 });
 
 test("rush fee protects the largest core cost and genuine off-hours work", () => {

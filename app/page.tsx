@@ -420,11 +420,17 @@ export default function Home() {
 
       <section className="tools-section" aria-labelledby="free-tools-heading">
         <div className="section-heading">
-          <p className="kicker">03 / HANDLE THE CONVERSATION</p>
-          <h2 id="free-tools-heading">Free tools for the terms that protect the price.</h2>
-          <p>Turn the calculator result into clearer scope, revision, urgency, and negotiation language.</p>
+          <p className="kicker">03 / BUILD AND DEFEND THE QUOTE</p>
+          <h2 id="free-tools-heading">Free tools for the price and the terms that protect it.</h2>
+          <p>Estimate the work, then turn the result into clearer scope, revision, urgency, and negotiation language.</p>
         </div>
         <div className="tools-grid">
+          <Link href="/freelance-project-cost-calculator/">
+            <span>PROJECT ESTIMATOR</span>
+            <h3>Freelance project cost calculator</h3>
+            <p>Build a client quote from delivery hours, coordination, direct costs, contingency, and margin.</p>
+            <strong>Estimate a project →</strong>
+          </Link>
           <Link href="/scope-creep-clause-generator/">
             <span>CLAUSE BUILDER</span>
             <h3>Scope-creep clause generator</h3>
