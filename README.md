@@ -12,9 +12,9 @@ browser and are not transmitted or stored.
 
 - Calculator: https://rookepoole.github.io/worth-the-work/
 - Free project red-flag checklist:
-  https://prairiegrantscout.gumroad.com/l/freelance-project-red-flag-checklist
+  https://prairiegrantscout.gumroad.com/l/freelance-project-red-flag-checklist?utm_source=github&utm_medium=repository&utm_campaign=worth_the_work
 - Editable decision workbook and script library:
-  https://prairiegrantscout.gumroad.com/l/worth-the-work
+  https://prairiegrantscout.gumroad.com/l/worth-the-work?utm_source=github&utm_medium=repository&utm_campaign=worth_the_work
 
 ## Local development
 

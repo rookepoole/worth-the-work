@@ -227,6 +227,7 @@ input[type="range"] { accent-color: var(--violet); cursor: pointer; width: 100%;
 .kit-offer > p { font-size: 13px; line-height: 1.4; }
 .kit-offer .checkout-link { background: var(--ink); border: 0; color: white; cursor: pointer; font-weight: 680; margin: 14px 0 12px; padding: 15px 18px; text-decoration: none; width: 100%; }
 .kit-offer small { font-size: 10px; }
+.kit-offer .secondary-offer-link { border-bottom: 1px solid currentColor; font-size: 11px; font-weight: 650; margin-top: 18px; padding-bottom: 2px; }
 
 .faq-section { border-top: 1px solid var(--ink); }
 .faq-grid { display: grid; gap: 24px; grid-template-columns: repeat(3, 1fr); margin-top: 48px; }

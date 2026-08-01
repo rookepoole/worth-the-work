@@ -41,6 +41,11 @@ const structuredData = {
   },
 };
 
+const paidKitUrl =
+  "https://prairiegrantscout.gumroad.com/l/worth-the-work?utm_source=github_pages&utm_medium=calculator&utm_campaign=worth_the_work&utm_content=paid_kit_cta";
+const freeChecklistUrl =
+  "https://prairiegrantscout.gumroad.com/l/freelance-project-red-flag-checklist?utm_source=github_pages&utm_medium=calculator&utm_campaign=worth_the_work&utm_content=free_checklist_cta";
+
 function NumberField({
   id,
   label,
@@ -433,13 +438,21 @@ export default function Home() {
             <p>One project priced correctly can cover it.</p>
             <a
               className="checkout-link"
-              href="https://prairiegrantscout.gumroad.com/l/worth-the-work"
+              href={paidKitUrl}
               rel="noreferrer"
               target="_blank"
             >
               Get the Decision Kit
             </a>
             <small>Instant digital download</small>
+            <a
+              className="secondary-offer-link"
+              href={freeChecklistUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Start with the free red-flag checklist
+            </a>
           </div>
         </div>
       </section>

@@ -46,3 +46,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify IndexNow
+        shell: bash
+        run: |
+          curl --fail-with-body --retry 3 --get "https://api.indexnow.org/indexnow" \
+            --data-urlencode "url=https://rookepoole.github.io/worth-the-work/" \
+            --data-urlencode "key=e57ce0b65a8245aa8612e10aa870ab1d" \
+            --data-urlencode "keyLocation=https://rookepoole.github.io/worth-the-work/e57ce0b65a8245aa8612e10aa870ab1d.txt"

@@ -10,6 +10,8 @@ test("exports the calculator and its conversion path", async () => {
   assert.match(html, /Freelance Project Decision Calculator/);
   assert.match(html, /Minimum worth accepting/);
   assert.match(html, /https:\/\/prairiegrantscout\.gumroad\.com\/l\/worth-the-work/);
+  assert.match(html, /utm_source=github_pages/);
+  assert.match(html, /free-checklist-cta|free_checklist_cta/);
   assert.match(html, /\/worth-the-work\/_next\/static\//);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /https:\/\/rookepoole\.github\.io\/worth-the-work\//);
@@ -21,4 +23,7 @@ test("exports a usable 404 page and static assets", async () => {
   await access(new URL("_next/static/", outputRoot));
   await access(new URL("robots.txt", outputRoot));
   await access(new URL("sitemap.xml", outputRoot));
+  await access(
+    new URL("e57ce0b65a8245aa8612e10aa870ab1d.txt", outputRoot),
+  );
 });
