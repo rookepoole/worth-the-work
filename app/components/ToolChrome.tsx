@@ -68,7 +68,12 @@ export function ToolChrome({
         <p className="tool-disclaimer">
           General planning information only—not legal, tax, or financial
           advice. Review contract language with a qualified professional for
-          your jurisdiction and circumstances.
+          your jurisdiction and circumstances. Inputs stay in your browser;
+          this site uses no analytics, cookies, or accounts. {" "}
+          <a href="https://github.com/rookepoole/worth-the-work">
+            Open-source MIT code
+          </a>
+          .
         </p>
       </main>
     </>

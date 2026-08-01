@@ -510,7 +510,13 @@ export default function Home() {
       <footer>
         <a className="brand footer-brand" href="#top"><span className="brand-mark">W/W</span><span>Worth the Work</span></a>
         <p>Make the decision before the project makes it for you.</p>
-        <p className="footer-small">© 2026 Worth the Work. Planning estimates only.</p>
+        <p className="footer-small">
+          © 2026 Worth the Work. Planning estimates only. {" "}
+          <a href="https://github.com/rookepoole/worth-the-work">
+            MIT-licensed source
+          </a>
+          ; no analytics, cookies, or accounts.
+        </p>
       </footer>
     </main>
   );

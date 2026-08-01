@@ -8,6 +8,16 @@ buffer, minimum acceptable fee, suggested deposit, and a practical
 `TAKE` / `GUARDRAIL` / `COUNTER` / `PASS` recommendation. Inputs remain in the
 browser and are not transmitted or stored.
 
+## Privacy and licensing
+
+- All calculations and generated text run locally in the browser.
+- The site uses no analytics scripts, advertising scripts, cookies, accounts,
+  or server-side input storage.
+- Outbound product links include ordinary UTM query parameters so Gumroad can
+  distinguish which on-site call to action was clicked. No page input is ever
+  included in those links.
+- The source is available under the [MIT License](LICENSE).
+
 ## Live product funnel
 
 - Calculator: https://rookepoole.github.io/worth-the-work/
