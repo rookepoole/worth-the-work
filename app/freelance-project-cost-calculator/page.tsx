@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ToolChrome } from "@/app/components/ToolChrome";
+import { socialPreviewImage, socialPreviewUrl } from "@/app/lib/socialPreview";
 import { ProjectCostCalculator } from "./tool";
 
 const pageUrl =
@@ -18,11 +19,13 @@ export const metadata: Metadata = {
     url: pageUrl,
     title: pageTitle,
     description: pageDescription,
+    images: [socialPreviewImage],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
+    images: [socialPreviewUrl],
   },
 };
 

@@ -83,6 +83,10 @@ test("exports five distinct conversion-focused utility pages", async () => {
     assert.match(html, /application\/ld\+json/);
     assert.match(html, /WebApplication/);
     assert.match(html, /"price":0/);
+    assert.match(html, /property="og:image"/);
+    assert.match(html, /name="twitter:card" content="summary_large_image"/);
+    assert.match(html, /name="twitter:image"/);
+    assert.match(html, /worth-the-work-preview\.jpg/);
     assert.doesNotMatch(html, /â|Ã|Â/);
   }
 
