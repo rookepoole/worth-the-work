@@ -305,10 +305,10 @@ footer > p { font-size: 13px; text-align: center; }
 .tool-guide-split ol, .tool-guide-split ul { margin: 18px 0 0; padding-left: 20px; }
 .tool-guide-split li + li { margin-top: 8px; }
 .tool-formula { background: var(--ink); color: white; display: grid; gap: 10px; margin-top: 36px; padding: 28px; }
-.tool-formula span { color: var(--yellow); font-family: var(--font-geist-mono); font-size: 10px; letter-spacing: 0.08em; }
+.tool-formula span { color: var(--lime); font-family: var(--font-geist-mono); font-size: 10px; letter-spacing: 0.08em; }
 .tool-formula strong { font-family: Georgia, serif; font-size: clamp(24px, 3vw, 40px); font-weight: 400; }
 .tool-formula p { color: rgba(255,255,255,0.7); font-size: 13px; margin: 0; }
-.tool-related { align-items: center; background: var(--yellow); border: 1px solid var(--ink); display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 16px; padding: 20px 24px; }
+.tool-related { align-items: center; background: var(--lime); border: 1px solid var(--ink); display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 16px; padding: 20px 24px; }
 .tool-related strong { font-size: 12px; text-transform: uppercase; }
 .tool-related a { color: var(--ink); font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
