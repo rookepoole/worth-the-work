@@ -1,18 +1,27 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import {
+  createMoneyFormatter,
+  CurrencyField,
+  getCurrencySymbol,
+  type CurrencyCode,
+} from "../components/CurrencyField";
 
 export function ScopeCreepClauseGenerator() {
+  const [currency, setCurrency] = useState<CurrencyCode>("USD");
   const [revisionRounds, setRevisionRounds] = useState(2);
   const [extraRoundFee, setExtraRoundFee] = useState(300);
   const [feedbackOwner, setFeedbackOwner] = useState("the designated client contact");
   const [deliverables, setDeliverables] = useState("the deliverables listed in this proposal");
   const [copied, setCopied] = useState(false);
+  const money = useMemo(() => createMoneyFormatter(currency), [currency]);
+  const currencySymbol = getCurrencySymbol(currency);
 
   const clause = useMemo(
     () =>
-      `The project fee covers ${deliverables || "the agreed deliverables"}, including up to ${revisionRounds} consolidated revision ${revisionRounds === 1 ? "round" : "rounds"}. A revision round means one complete set of feedback submitted at the same time by ${feedbackOwner || "the designated client contact"}. New deliverables, changes to an approved direction, additional revision rounds, or requests outside the listed scope will be treated as a change request. Additional revision rounds are billed at $${extraRoundFee.toLocaleString("en-US")} each unless otherwise quoted. Before beginning out-of-scope work, the freelancer will provide the added fee and any schedule adjustment in writing. Work on a change request begins only after written approval.`,
-    [deliverables, extraRoundFee, feedbackOwner, revisionRounds],
+      `The project fee covers ${deliverables || "the agreed deliverables"}, including up to ${revisionRounds} consolidated revision ${revisionRounds === 1 ? "round" : "rounds"}. A revision round means one complete set of feedback submitted at the same time by ${feedbackOwner || "the designated client contact"}. New deliverables, changes to an approved direction, additional revision rounds, or requests outside the listed scope will be treated as a change request. Additional revision rounds are billed at ${money.format(extraRoundFee)} each unless otherwise quoted. Before beginning out-of-scope work, the freelancer will provide the added fee and any schedule adjustment in writing. Work on a change request begins only after written approval.`,
+    [deliverables, extraRoundFee, feedbackOwner, money, revisionRounds],
   );
 
   const copyClause = async () => {
@@ -29,6 +38,7 @@ export function ScopeCreepClauseGenerator() {
           <div><h2>Choose the boundaries</h2><p>Use terms that match the actual proposal.</p></div>
         </div>
         <div className="tool-field-grid">
+          <CurrencyField id="scope-currency" value={currency} onChange={setCurrency} />
           <label className="field" htmlFor="revision-rounds">
             <span className="field-label">Included revision rounds</span>
             <span className="input-shell">
@@ -37,7 +47,7 @@ export function ScopeCreepClauseGenerator() {
           </label>
           <label className="field" htmlFor="extra-round-fee">
             <span className="field-label">Fee for another round</span>
-            <span className="input-shell"><span className="input-affix">$</span><input id="extra-round-fee" min="0" step="25" type="number" value={extraRoundFee} onChange={(event) => setExtraRoundFee(Math.max(0, Number(event.target.value) || 0))} /></span>
+            <span className="input-shell"><span className="input-affix">{currencySymbol}</span><input id="extra-round-fee" min="0" step="25" type="number" value={extraRoundFee} onChange={(event) => setExtraRoundFee(Math.max(0, Number(event.target.value) || 0))} /></span>
           </label>
           <label className="field field-wide" htmlFor="feedback-owner">
             <span className="field-label">Who consolidates feedback?</span>

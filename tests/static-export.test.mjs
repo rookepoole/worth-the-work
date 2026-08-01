@@ -17,6 +17,8 @@ test("exports the calculator and its conversion path", async () => {
   assert.match(html, /https:\/\/rookepoole\.github\.io\/worth-the-work\//);
   assert.match(html, /MIT-licensed source/);
   assert.match(html, /no analytics, cookies, or accounts/i);
+  assert.match(html, /EUR — euro/);
+  assert.match(html, /NZD — New Zealand dollar/);
   assert.doesNotMatch(html, /â|Ã|Â/);
 });
 
@@ -44,6 +46,7 @@ test("exports three distinct conversion-focused utility pages", async () => {
     assert.match(html, /worth-the-work/);
     assert.match(html, /Open-source MIT code/);
     assert.match(html, /no analytics, cookies, or accounts/i);
+    assert.match(html, /EUR — euro/);
     assert.doesNotMatch(html, /â|Ã|Â/);
   }
 

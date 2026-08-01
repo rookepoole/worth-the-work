@@ -164,7 +164,8 @@ h1 {
 .field-hint { color: var(--muted); font-size: 11px; }
 .input-shell { align-items: center; background: white; border: 1px solid var(--line); display: flex; height: 48px; }
 .input-shell:focus-within { border-color: var(--violet); box-shadow: 0 0 0 2px rgba(110, 71, 255, 0.16); }
-.input-shell input { background: transparent; border: 0; color: var(--ink); min-width: 0; outline: 0; padding: 0 13px; width: 100%; }
+.input-shell input, .input-shell select { background: transparent; border: 0; color: var(--ink); min-width: 0; outline: 0; padding: 0 13px; width: 100%; }
+.input-shell select { cursor: pointer; height: 100%; }
 .input-affix { color: var(--muted); padding-left: 13px; }
 .input-affix + input { padding-left: 5px; }
 .input-affix.suffix { padding: 0 13px 0 4px; white-space: nowrap; }

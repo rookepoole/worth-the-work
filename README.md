@@ -6,7 +6,8 @@ client risk before accepting the work.
 The calculator estimates expected workload, effective hourly return, risk
 buffer, minimum acceptable fee, suggested deposit, and a practical
 `TAKE` / `GUARDRAIL` / `COUNTER` / `PASS` recommendation. Inputs remain in the
-browser and are not transmitted or stored.
+browser and are not transmitted or stored. All four utilities support USD,
+EUR, GBP, CAD, AUD, and NZD without exchange-rate conversion.
 
 ## Privacy and licensing
 

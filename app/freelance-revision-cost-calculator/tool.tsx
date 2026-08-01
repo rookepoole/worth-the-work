@@ -1,20 +1,23 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
-const money = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-});
+import {
+  createMoneyFormatter,
+  CurrencyField,
+  getCurrencySymbol,
+  type CurrencyCode,
+} from "../components/CurrencyField";
 
 export function RevisionCostCalculator() {
+  const [currency, setCurrency] = useState<CurrencyCode>("USD");
   const [chance, setChance] = useState(60);
   const [hours, setHours] = useState(4);
   const [rate, setRate] = useState(75);
   const [includedRounds, setIncludedRounds] = useState(2);
   const [buffer, setBuffer] = useState(15);
   const [copied, setCopied] = useState(false);
+  const money = useMemo(() => createMoneyFormatter(currency), [currency]);
+  const currencySymbol = getCurrencySymbol(currency);
 
   const result = useMemo(() => {
     const baseCost = Math.max(0, hours * rate);
@@ -39,6 +42,7 @@ export function RevisionCostCalculator() {
           <div><h2>Model one revision round</h2><p>Use the expected work, not the best case.</p></div>
         </div>
         <div className="tool-field-grid">
+          <CurrencyField id="revision-currency" value={currency} onChange={setCurrency} />
           <label className="field" htmlFor="revision-chance">
             <span className="field-label">Chance the round happens</span>
             <span className="input-shell"><input id="revision-chance" min="0" max="100" type="number" value={chance} onChange={(event) => setChance(Number(event.target.value) || 0)} /><span className="input-affix suffix">%</span></span>
@@ -49,7 +53,7 @@ export function RevisionCostCalculator() {
           </label>
           <label className="field" htmlFor="revision-rate">
             <span className="field-label">Target hourly return</span>
-            <span className="input-shell"><span className="input-affix">$</span><input id="revision-rate" min="0" step="5" type="number" value={rate} onChange={(event) => setRate(Number(event.target.value) || 0)} /></span>
+            <span className="input-shell"><span className="input-affix">{currencySymbol}</span><input id="revision-rate" min="0" step="5" type="number" value={rate} onChange={(event) => setRate(Number(event.target.value) || 0)} /></span>
           </label>
           <label className="field" htmlFor="included-rounds">
             <span className="field-label">Rounds already included</span>
@@ -65,7 +69,7 @@ export function RevisionCostCalculator() {
       <aside className="tool-card tool-output" aria-live="polite">
         <div className="tool-card-heading">
           <span>02</span>
-          <div><h2>Revision pricing readout</h2><p>Round prices are rounded up to the nearest $25.</p></div>
+          <div><h2>Revision pricing readout</h2><p>Round prices are rounded up to the nearest 25 in {currency}.</p></div>
         </div>
         <div className="tool-metric-grid">
           <div><span>Expected cost inside the quote</span><strong>{money.format(result.expectedCost)}</strong></div>

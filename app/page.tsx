@@ -2,6 +2,12 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import {
+  createMoneyFormatter,
+  CurrencyField,
+  getCurrencySymbol,
+  type CurrencyCode,
+} from "./components/CurrencyField";
 
 type ProtectionKey =
   | "writtenScope"
@@ -19,12 +25,6 @@ const protectionLabels: Array<{ key: ProtectionKey; label: string }> = [
   { key: "decisionMaker", label: "One decision-maker" },
   { key: "realisticDeadline", label: "Realistic deadline" },
 ];
-
-const money = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-});
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -93,6 +93,7 @@ function NumberField({
 }
 
 export default function Home() {
+  const [currency, setCurrency] = useState<CurrencyCode>("USD");
   const [projectName, setProjectName] = useState("Website refresh");
   const [fee, setFee] = useState(4200);
   const [deliveryHours, setDeliveryHours] = useState(28);
@@ -111,6 +112,8 @@ export default function Home() {
     realisticDeadline: true,
   });
   const [copied, setCopied] = useState(false);
+  const money = useMemo(() => createMoneyFormatter(currency), [currency]);
+  const currencySymbol = getCurrencySymbol(currency);
 
   const result = useMemo(() => {
     const protectionCount = Object.values(protections).filter(Boolean).length;
@@ -287,12 +290,13 @@ export default function Home() {
             </label>
 
             <div className="field-grid">
-              <NumberField id="fee" label="Fee offered" prefix="$" value={fee} onChange={setFee} step={50} />
-              <NumberField id="costs" label="Direct costs" prefix="$" value={directCosts} onChange={setDirectCosts} step={25} />
+              <CurrencyField id="calculator-currency" value={currency} onChange={setCurrency} />
+              <NumberField id="fee" label="Fee offered" prefix={currencySymbol} value={fee} onChange={setFee} step={50} />
+              <NumberField id="costs" label="Direct costs" prefix={currencySymbol} value={directCosts} onChange={setDirectCosts} step={25} />
               <NumberField id="delivery" label="Delivery work" suffix="hrs" value={deliveryHours} onChange={setDeliveryHours} />
               <NumberField id="admin" label="Meetings + admin" suffix="hrs" value={adminHours} onChange={setAdminHours} />
               <NumberField id="revisions" label="Included revisions" suffix="hrs" value={revisionHours} onChange={setRevisionHours} />
-              <NumberField id="rate" label="Your target floor" prefix="$" suffix="/hr" value={targetRate} onChange={setTargetRate} step={5} />
+              <NumberField id="rate" label="Your target floor" prefix={currencySymbol} suffix="/hr" value={targetRate} onChange={setTargetRate} step={5} />
             </div>
 
             <div className="panel-heading second-heading">

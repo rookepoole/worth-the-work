@@ -1,14 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import {
+  createMoneyFormatter,
+  CurrencyField,
+  getCurrencySymbol,
+  type CurrencyCode,
+} from "../components/CurrencyField";
 
 type ResponseMode = "hold" | "reduce" | "phase" | "decline";
-
-const money = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-});
 
 const modeLabels: Array<{ value: ResponseMode; label: string }> = [
   { value: "hold", label: "Hold scope + price" },
@@ -18,12 +18,15 @@ const modeLabels: Array<{ value: ResponseMode; label: string }> = [
 ];
 
 export function QuoteResponseGenerator() {
+  const [currency, setCurrency] = useState<CurrencyCode>("USD");
   const [mode, setMode] = useState<ResponseMode>("reduce");
   const [quotedFee, setQuotedFee] = useState(3500);
   const [clientBudget, setClientBudget] = useState(2000);
   const [reducedScope, setReducedScope] = useState("strategy and one core deliverable");
   const [revisionRounds, setRevisionRounds] = useState(1);
   const [copied, setCopied] = useState(false);
+  const money = useMemo(() => createMoneyFormatter(currency), [currency]);
+  const currencySymbol = getCurrencySymbol(currency);
 
   const response = useMemo(() => {
     const quote = money.format(quotedFee);
@@ -41,7 +44,7 @@ export function QuoteResponseGenerator() {
       return `Thank you for considering me. I cannot deliver the proposed scope responsibly within the ${budget} budget, so I will step back from this version of the project. If the scope, schedule, or budget changes, I would be glad to revisit it.`;
     }
     return `I can work within ${budget} by narrowing the project to ${scope}, with ${rounds}. The remaining items from the ${quote} proposal can become a second phase when the budget allows. If you would like the full original scope now, the fee remains ${quote}.`;
-  }, [clientBudget, mode, quotedFee, reducedScope, revisionRounds]);
+  }, [clientBudget, mode, money, quotedFee, reducedScope, revisionRounds]);
 
   const copyResponse = async () => {
     await navigator.clipboard.writeText(response);
@@ -65,13 +68,14 @@ export function QuoteResponseGenerator() {
           </div>
         </fieldset>
         <div className="tool-field-grid">
+          <CurrencyField id="quote-currency" value={currency} onChange={setCurrency} />
           <label className="field" htmlFor="quoted-fee">
             <span className="field-label">Your quoted fee</span>
-            <span className="input-shell"><span className="input-affix">$</span><input id="quoted-fee" min="0" step="50" type="number" value={quotedFee} onChange={(event) => setQuotedFee(Number(event.target.value) || 0)} /></span>
+            <span className="input-shell"><span className="input-affix">{currencySymbol}</span><input id="quoted-fee" min="0" step="50" type="number" value={quotedFee} onChange={(event) => setQuotedFee(Number(event.target.value) || 0)} /></span>
           </label>
           <label className="field" htmlFor="client-budget">
             <span className="field-label">Client budget</span>
-            <span className="input-shell"><span className="input-affix">$</span><input id="client-budget" min="0" step="50" type="number" value={clientBudget} onChange={(event) => setClientBudget(Number(event.target.value) || 0)} /></span>
+            <span className="input-shell"><span className="input-affix">{currencySymbol}</span><input id="client-budget" min="0" step="50" type="number" value={clientBudget} onChange={(event) => setClientBudget(Number(event.target.value) || 0)} /></span>
           </label>
           <label className="field field-wide" htmlFor="reduced-scope">
             <span className="field-label">Smaller scope or first phase</span>
