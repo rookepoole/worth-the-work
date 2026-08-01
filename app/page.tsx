@@ -36,6 +36,8 @@ const structuredData = {
   operatingSystem: "Any",
   description:
     "A free browser-based calculator for evaluating freelance project economics, hidden hours, scope risk, and minimum acceptable fees.",
+  image:
+    "https://rookepoole.github.io/worth-the-work/worth-the-work-preview.jpg",
   offers: {
     "@type": "Offer",
     price: "0",
