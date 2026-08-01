@@ -15,8 +15,10 @@ EUR, GBP, CAD, AUD, and NZD without exchange-rate conversion.
 - The site uses no analytics scripts, advertising scripts, cookies, accounts,
   or server-side input storage.
 - Outbound product links include ordinary UTM query parameters so Gumroad can
-  distinguish which on-site call to action was clicked. No page input is ever
-  included in those links.
+  distinguish the on-site call to action and, when recognized locally, the
+  immediate referring directory or search channel. This lookup runs only in
+  the browser; no request is made until the visitor chooses a product link, and
+  no page input is ever included.
 - The source is available under the [MIT License](LICENSE).
 
 ## Live product funnel

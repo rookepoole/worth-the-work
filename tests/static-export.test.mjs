@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
+import {
+  buildOfferUrl,
+  sourceFromReferrer,
+} from "../app/lib/offerAttribution.ts";
 
 const outputRoot = new URL("../out/", import.meta.url);
 
@@ -29,6 +33,18 @@ test("exports a usable 404 page and static assets", async () => {
   await access(new URL("sitemap.xml", outputRoot));
   await access(
     new URL("e57ce0b65a8245aa8612e10aa870ab1d.txt", outputRoot),
+  );
+});
+
+test("classifies acquisition referrers without collecting page inputs", () => {
+  assert.equal(sourceFromReferrer("https://public.tools/tool/worth-the-work", "github_pages"), "public_tools");
+  assert.equal(sourceFromReferrer("https://toolcommons.org/", "github_pages"), "tool_commons");
+  assert.equal(sourceFromReferrer("https://zearches.com/software-saas", "github_pages"), "zearches");
+  assert.equal(sourceFromReferrer("https://github.com/etnbrd/awesome-freelance-fr", "github_pages"), "github_referral");
+  assert.equal(sourceFromReferrer("https://example.com/", "github_pages"), "github_pages");
+  assert.match(
+    buildOfferUrl({ offer: "paid", source: "public_tools", medium: "calculator", content: "paid_kit_cta" }),
+    /utm_source=public_tools/,
   );
 });
 

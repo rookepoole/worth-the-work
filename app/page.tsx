@@ -8,6 +8,7 @@ import {
   getCurrencySymbol,
   type CurrencyCode,
 } from "./components/CurrencyField";
+import { TrackedOfferLink } from "./components/TrackedOfferLink";
 
 type ProtectionKey =
   | "writtenScope"
@@ -41,11 +42,6 @@ const structuredData = {
     priceCurrency: "USD",
   },
 };
-
-const paidKitUrl =
-  "https://prairiegrantscout.gumroad.com/l/worth-the-work?utm_source=github_pages&utm_medium=calculator&utm_campaign=worth_the_work&utm_content=paid_kit_cta";
-const freeChecklistUrl =
-  "https://prairiegrantscout.gumroad.com/l/freelance-project-red-flag-checklist?utm_source=github_pages&utm_medium=calculator&utm_campaign=worth_the_work&utm_content=free_checklist_cta";
 
 function NumberField({
   id,
@@ -469,23 +465,27 @@ export default function Home() {
             <span>LAUNCH PRICE</span>
             <strong>$19</strong>
             <p>One project priced correctly can cover it.</p>
-            <a
+            <TrackedOfferLink
               className="checkout-link"
-              href={paidKitUrl}
+              offer="paid"
+              medium="calculator"
+              content="paid_kit_cta"
               rel="noreferrer"
               target="_blank"
             >
               Get the Decision Kit
-            </a>
+            </TrackedOfferLink>
             <small>Instant digital download</small>
-            <a
+            <TrackedOfferLink
               className="secondary-offer-link"
-              href={freeChecklistUrl}
+              offer="free"
+              medium="calculator"
+              content="free_checklist_cta"
               rel="noreferrer"
               target="_blank"
             >
               Start with the free red-flag checklist
-            </a>
+            </TrackedOfferLink>
           </div>
         </div>
       </section>

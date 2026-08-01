@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { TrackedOfferLink } from "./TrackedOfferLink";
 
 export function ToolChrome({
   eyebrow,
@@ -21,12 +22,14 @@ export function ToolChrome({
         </Link>
         <nav aria-label="Tool navigation">
           <Link href="/#calculator">Project calculator</Link>
-          <a
+          <TrackedOfferLink
             className="nav-cta"
-            href="https://prairiegrantscout.gumroad.com/l/worth-the-work?utm_source=github_pages&utm_medium=tool&utm_campaign=worth_the_work&utm_content=tool_header"
+            offer="paid"
+            medium="tool"
+            content="tool_header"
           >
             Decision Kit
-          </a>
+          </TrackedOfferLink>
         </nav>
       </header>
       <main className="tool-page">
@@ -51,18 +54,22 @@ export function ToolChrome({
             </p>
           </div>
           <div className="tool-funnel-actions">
-            <a
+            <TrackedOfferLink
               className="checkout-link"
-              href="https://prairiegrantscout.gumroad.com/l/worth-the-work?utm_source=github_pages&utm_medium=tool&utm_campaign=worth_the_work&utm_content=tool_footer_paid"
+              offer="paid"
+              medium="tool"
+              content="tool_footer_paid"
             >
               Get the $19 Decision Kit
-            </a>
-            <a
+            </TrackedOfferLink>
+            <TrackedOfferLink
               className="secondary-offer-link"
-              href="https://prairiegrantscout.gumroad.com/l/freelance-project-red-flag-checklist?utm_source=github_pages&utm_medium=tool&utm_campaign=worth_the_work&utm_content=tool_footer_free"
+              offer="free"
+              medium="tool"
+              content="tool_footer_free"
             >
               Get the free red-flag checklist
-            </a>
+            </TrackedOfferLink>
           </div>
         </section>
         <p className="tool-disclaimer">
