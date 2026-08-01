@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["scope-creep-clause-generator/", 0.9],
     ["freelance-revision-cost-calculator/", 0.9],
     ["freelance-quote-response-generator/", 0.9],
+    ["freelance-rush-fee-calculator/", 0.9],
   ].map(([path, priority]) => ({
     url: `https://rookepoole.github.io/worth-the-work/${path}`,
     lastModified,

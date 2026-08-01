@@ -124,6 +124,7 @@ export default function ScopeCreepClausePage() {
           <strong>Continue the decision:</strong>
           <Link href="/freelance-revision-cost-calculator/">Calculate what an extra revision round should cost</Link>
           <Link href="/freelance-quote-response-generator/">Respond when the client pushes back on price</Link>
+          <Link href="/freelance-rush-fee-calculator/">Price an accelerated deadline before accepting it</Link>
         </aside>
       </section>
     </ToolChrome>

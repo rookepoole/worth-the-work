@@ -134,6 +134,7 @@ export default function QuoteResponsePage() {
           <strong>Strengthen the revised offer:</strong>
           <Link href="/">Recalculate the project’s minimum acceptable fee</Link>
           <Link href="/scope-creep-clause-generator/">Generate the scope and change-request boundary</Link>
+          <Link href="/freelance-rush-fee-calculator/">Quote a faster timeline without absorbing the disruption</Link>
         </aside>
       </section>
     </ToolChrome>

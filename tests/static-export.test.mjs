@@ -5,6 +5,11 @@ import {
   buildOfferUrl,
   sourceFromReferrer,
 } from "../app/lib/offerAttribution.ts";
+import {
+  calculateRushFee,
+  suggestedMarkupForCompression,
+  timelineCompression,
+} from "../app/lib/rushFee.ts";
 
 const outputRoot = new URL("../out/", import.meta.url);
 
@@ -48,11 +53,12 @@ test("classifies acquisition referrers without collecting page inputs", () => {
   );
 });
 
-test("exports three distinct conversion-focused utility pages", async () => {
+test("exports four distinct conversion-focused utility pages", async () => {
   const tools = [
     ["scope-creep-clause-generator/index.html", /Define the boundary before you need to defend it/],
     ["freelance-revision-cost-calculator/index.html", /probability × hours × target hourly return/],
     ["freelance-quote-response-generator/index.html", /If the price changes, another real variable should change too/],
+    ["freelance-rush-fee-calculator/index.html", /Price urgency as capacity, not as annoyance/],
   ];
 
   for (const [path, title] of tools) {
@@ -73,4 +79,27 @@ test("exports three distinct conversion-focused utility pages", async () => {
   assert.match(sitemap, /scope-creep-clause-generator/);
   assert.match(sitemap, /freelance-revision-cost-calculator/);
   assert.match(sitemap, /freelance-quote-response-generator/);
+  assert.match(sitemap, /freelance-rush-fee-calculator/);
+});
+
+test("rush fee protects the largest core cost and genuine off-hours work", () => {
+  assert.equal(timelineCompression(10, 3), 0.7);
+  assert.equal(suggestedMarkupForCompression(0.7), 50);
+
+  const result = calculateRushFee({
+    basePrice: 1200,
+    estimatedHours: 10,
+    minimumHourlyRate: 90,
+    markupPercent: 50,
+    displacedWork: 250,
+    offHoursRequired: true,
+    offHoursPercent: 15,
+  });
+
+  assert.equal(result.percentageSurcharge, 600);
+  assert.equal(result.floorGap, 0);
+  assert.equal(result.offHoursSurcharge, 180);
+  assert.equal(result.surcharge, 800);
+  assert.equal(result.total, 2000);
+  assert.equal(result.effectiveHourlyRate, 200);
 });

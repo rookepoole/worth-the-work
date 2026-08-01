@@ -420,7 +420,7 @@ export default function Home() {
         <div className="section-heading">
           <p className="kicker">03 / HANDLE THE CONVERSATION</p>
           <h2 id="free-tools-heading">Free tools for the terms that protect the price.</h2>
-          <p>Turn the calculator result into clearer scope, revision, and negotiation language.</p>
+          <p>Turn the calculator result into clearer scope, revision, urgency, and negotiation language.</p>
         </div>
         <div className="tools-grid">
           <Link href="/scope-creep-clause-generator/">
@@ -440,6 +440,12 @@ export default function Home() {
             <h3>Quote response generator</h3>
             <p>Hold the price, reduce scope, phase the work, or decline without negotiating against yourself.</p>
             <strong>Build a response →</strong>
+          </Link>
+          <Link href="/freelance-rush-fee-calculator/">
+            <span>URGENCY PRICING</span>
+            <h3>Rush fee calculator</h3>
+            <p>Protect displaced work and your hourly floor, then copy a client quote and policy clause.</p>
+            <strong>Price the rush →</strong>
           </Link>
         </div>
       </section>
