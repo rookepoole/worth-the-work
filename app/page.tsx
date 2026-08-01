@@ -422,7 +422,7 @@ export default function Home() {
         <div className="section-heading">
           <p className="kicker">03 / BUILD AND DEFEND THE QUOTE</p>
           <h2 id="free-tools-heading">Free tools for the price and the terms that protect it.</h2>
-          <p>Estimate the work, then turn the result into clearer scope, revision, urgency, and negotiation language.</p>
+          <p>Estimate the work, then turn the result into clearer scope, revision, urgency, payment, and negotiation language.</p>
         </div>
         <div className="tools-grid">
           <Link href="/freelance-project-cost-calculator/">
@@ -454,6 +454,12 @@ export default function Home() {
             <h3>Rush fee calculator</h3>
             <p>Protect displaced work and your hourly floor, then copy a client quote and policy clause.</p>
             <strong>Price the rush →</strong>
+          </Link>
+          <Link href="/freelance-late-payment-calculator/">
+            <span>OVERDUE INVOICE</span>
+            <h3>Late payment fee calculator</h3>
+            <p>Calculate simple interest and written fees, measure the hidden cash-flow cost, and copy a factual reminder.</p>
+            <strong>Update the balance →</strong>
           </Link>
         </div>
       </section>

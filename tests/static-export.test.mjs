@@ -10,6 +10,7 @@ import {
   suggestedMarkupForCompression,
   timelineCompression,
 } from "../app/lib/rushFee.ts";
+import { calculateLatePayment } from "../app/lib/latePayment.ts";
 import { calculateProjectCost } from "../app/lib/projectCost.ts";
 
 const outputRoot = new URL("../out/", import.meta.url);
@@ -64,13 +65,14 @@ test("classifies acquisition referrers without collecting page inputs", () => {
   );
 });
 
-test("exports five distinct conversion-focused utility pages", async () => {
+test("exports six distinct conversion-focused utility pages", async () => {
   const tools = [
     ["freelance-project-cost-calculator/index.html", /A fixed fee still needs an honest cost model/],
     ["scope-creep-clause-generator/index.html", /Define the boundary before you need to defend it/],
     ["freelance-revision-cost-calculator/index.html", /probability × hours × target hourly return/],
     ["freelance-quote-response-generator/index.html", /If the price changes, another real variable should change too/],
     ["freelance-rush-fee-calculator/index.html", /Price urgency as capacity, not as annoyance/],
+    ["freelance-late-payment-calculator/index.html", /Calculate what the terms say/],
   ];
 
   for (const [path, title] of tools) {
@@ -97,6 +99,7 @@ test("exports five distinct conversion-focused utility pages", async () => {
   assert.match(sitemap, /freelance-revision-cost-calculator/);
   assert.match(sitemap, /freelance-quote-response-generator/);
   assert.match(sitemap, /freelance-rush-fee-calculator/);
+  assert.match(sitemap, /freelance-late-payment-calculator/);
 });
 
 test("project estimator protects labor, direct costs, contingency, and margin", () => {
@@ -139,4 +142,37 @@ test("rush fee protects the largest core cost and genuine off-hours work", () =>
   assert.equal(result.surcharge, 800);
   assert.equal(result.total, 2000);
   assert.equal(result.effectiveHourlyRate, 200);
+});
+
+test("late payment separates the written charge from the internal delay cost", () => {
+  const result = calculateLatePayment({
+    invoiceAmount: 2500,
+    daysOverdue: 45,
+    gracePeriodDays: 0,
+    ratePercent: 18,
+    ratePeriod: "annual",
+    flatFee: 0,
+    internalAnnualCostPercent: 12,
+  });
+
+  assert.equal(result.chargeableDays, 45);
+  assert.equal(result.annualizedRatePercent, 18);
+  assert.equal(Number(result.interestCharge.toFixed(2)), 55.48);
+  assert.equal(Number(result.updatedBalance.toFixed(2)), 2555.48);
+  assert.equal(Number(result.economicDelayCost.toFixed(2)), 36.99);
+
+  const insideGracePeriod = calculateLatePayment({
+    invoiceAmount: 1000,
+    daysOverdue: 5,
+    gracePeriodDays: 10,
+    ratePercent: 1.5,
+    ratePeriod: "monthly",
+    flatFee: 50,
+    internalAnnualCostPercent: 10,
+  });
+
+  assert.equal(insideGracePeriod.chargeableDays, 0);
+  assert.equal(insideGracePeriod.contractualCharge, 0);
+  assert.equal(insideGracePeriod.appliedFlatFee, 0);
+  assert.equal(insideGracePeriod.annualizedRatePercent, 18);
 });
