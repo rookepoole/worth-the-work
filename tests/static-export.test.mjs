@@ -68,6 +68,10 @@ test("classifies acquisition referrers without collecting page inputs", () => {
     buildOfferUrl({ offer: "recovery", source: "organic_search", medium: "tool", content: "late_payment_recovery_pack" }),
     /freelance-invoice-recovery-pack\?utm_source=organic_search/,
   );
+  assert.match(
+    buildOfferUrl({ offer: "followup_starter", source: "organic_search", medium: "tool", content: "overdue_email_followup_starter" }),
+    /freelance-invoice-follow-up-starter\?utm_source=organic_search/,
+  );
 });
 
 test("exports seven distinct conversion-focused utility pages", async () => {
@@ -125,6 +129,11 @@ test("exports seven distinct conversion-focused utility pages", async () => {
   assert.match(overdueEmail, /13 calm-to-firm messages/);
   assert.match(overdueEmail, /freelance-invoice-recovery-pack/);
   assert.match(overdueEmail, /utm_content=overdue_email_recovery_pack/);
+  assert.match(overdueEmail, /freelance-invoice-follow-up-starter/);
+  assert.match(overdueEmail, /utm_content=overdue_email_followup_starter/);
+
+  assert.match(latePayment, /freelance-invoice-follow-up-starter/);
+  assert.match(latePayment, /utm_content=late_payment_followup_starter/);
 });
 
 test("overdue email generator changes the ask when the payment state changes", () => {

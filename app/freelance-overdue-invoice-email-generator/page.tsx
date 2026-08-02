@@ -60,8 +60,9 @@ export default function OverdueInvoiceEmailPage() {
         paidOffer: "recovery",
         paidLabel: "Get the Invoice Recovery Pack — $9",
         paidContent: "overdue_email_recovery_pack",
-        freeLabel: "Start with the free project red-flag checklist",
-        freeContent: "overdue_email_footer_free",
+        freeOffer: "followup_starter",
+        freeLabel: "Get the free invoice follow-up starter",
+        freeContent: "overdue_email_followup_starter",
       }}
     >
       <script

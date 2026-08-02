@@ -1,9 +1,11 @@
-export type Offer = "paid" | "free" | "recovery";
+export type Offer = "paid" | "free" | "recovery" | "followup_starter";
 
 const offerUrls: Record<Offer, string> = {
   paid: "https://prairiegrantscout.gumroad.com/l/worth-the-work",
   free: "https://prairiegrantscout.gumroad.com/l/freelance-project-red-flag-checklist",
   recovery: "https://prairiegrantscout.gumroad.com/l/freelance-invoice-recovery-pack",
+  followup_starter:
+    "https://prairiegrantscout.gumroad.com/l/freelance-invoice-follow-up-starter",
 };
 
 const knownReferrers: Array<[RegExp, string]> = [

@@ -20,6 +20,7 @@ export function ToolChrome({
     paidOffer?: Offer;
     paidLabel?: string;
     paidContent?: string;
+    freeOffer?: Offer;
     freeLabel?: string;
     freeContent?: string;
   };
@@ -34,6 +35,7 @@ export function ToolChrome({
     paidOffer: funnel?.paidOffer ?? "paid",
     paidLabel: funnel?.paidLabel ?? "Get the $19 Decision Kit",
     paidContent: funnel?.paidContent ?? "tool_footer_paid",
+    freeOffer: funnel?.freeOffer ?? "free",
     freeLabel: funnel?.freeLabel ?? "Get the free red-flag checklist",
     freeContent: funnel?.freeContent ?? "tool_footer_free",
   };
@@ -86,7 +88,7 @@ export function ToolChrome({
             </TrackedOfferLink>
             <TrackedOfferLink
               className="secondary-offer-link"
-              offer="free"
+              offer={funnelCopy.freeOffer}
               medium="tool"
               content={funnelCopy.freeContent}
             >

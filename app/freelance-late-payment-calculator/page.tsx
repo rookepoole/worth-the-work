@@ -60,8 +60,9 @@ export default function LatePaymentPage() {
         paidOffer: "recovery",
         paidLabel: "Get the Invoice Recovery Pack — $9",
         paidContent: "late_payment_recovery_pack",
-        freeLabel: "Start with the free project red-flag checklist",
-        freeContent: "late_payment_footer_free",
+        freeOffer: "followup_starter",
+        freeLabel: "Get the free invoice follow-up starter",
+        freeContent: "late_payment_followup_starter",
       }}
     >
       <script
