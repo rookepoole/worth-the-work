@@ -472,11 +472,12 @@ export default function Home() {
             <p>
               The Worth the Work Decision Kit compares up to 20 opportunities,
               keeps your pricing logic consistent, and gives you the exact words
-              for a counter, scope reduction, deposit request, or clean decline.
+              for a counter, scope change, deposit, payment delay, follow-up, or
+              clean decline.
             </p>
             <ul>
               <li>Formula-driven project comparison workbook</li>
-              <li>24 counteroffer, boundary, and decline scripts</li>
+              <li>24 counteroffer, scope, deposit, delay, decline, and follow-up scripts</li>
               <li>Risk flag checklist and post-project review</li>
               <li>Editable forever; no subscription</li>
             </ul>

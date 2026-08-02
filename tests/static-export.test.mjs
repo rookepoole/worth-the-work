@@ -100,6 +100,15 @@ test("exports six distinct conversion-focused utility pages", async () => {
   assert.match(sitemap, /freelance-quote-response-generator/);
   assert.match(sitemap, /freelance-rush-fee-calculator/);
   assert.match(sitemap, /freelance-late-payment-calculator/);
+
+  const latePayment = await readFile(
+    new URL("freelance-late-payment-calculator/index.html", outputRoot),
+    "utf8",
+  );
+  assert.match(latePayment, /FOUR PAYMENT-DELAY SCRIPTS INCLUDED/);
+  assert.match(latePayment, /long payment terms/);
+  assert.match(latePayment, /pausing work for nonpayment/);
+  assert.match(latePayment, /utm_content=late_payment_footer_paid/);
 });
 
 test("project estimator protects labor, direct costs, contingency, and margin", () => {

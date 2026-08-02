@@ -52,6 +52,16 @@ export default function LatePaymentPage() {
       eyebrow="Overdue invoices"
       title="Calculate the balance before you chase the payment."
       description="Apply only the written rate and fee you are permitted to use, measure the business cost of waiting, and copy a calm payment reminder."
+      funnel={{
+        kicker: "FOUR PAYMENT-DELAY SCRIPTS INCLUDED",
+        title: "Use the next message without improvising.",
+        description:
+          "The Decision Kit includes ready-to-send language for long payment terms, pre-due reminders, overdue invoices, and pausing work for nonpayment—plus the editable 20-project workbook and 20 more client scripts.",
+        paidLabel: "Get the 24-script Decision Kit — $19",
+        paidContent: "late_payment_footer_paid",
+        freeLabel: "Start with the free project red-flag checklist",
+        freeContent: "late_payment_footer_free",
+      }}
     >
       <script
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

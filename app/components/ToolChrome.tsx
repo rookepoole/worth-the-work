@@ -6,13 +6,35 @@ export function ToolChrome({
   eyebrow,
   title,
   description,
+  funnel,
   children,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  funnel?: {
+    kicker?: string;
+    title?: string;
+    description?: string;
+    paidLabel?: string;
+    paidContent?: string;
+    freeLabel?: string;
+    freeContent?: string;
+  };
   children: ReactNode;
 }) {
+  const funnelCopy = {
+    kicker: funnel?.kicker ?? "NEED THE COMPLETE SYSTEM?",
+    title: funnel?.title ?? "Use one decision process across every project.",
+    description:
+      funnel?.description ??
+      "Worth the Work includes the editable 20-project workbook and 24 client-ready counteroffer, scope, deposit, payment-delay, decline, and follow-up scripts.",
+    paidLabel: funnel?.paidLabel ?? "Get the $19 Decision Kit",
+    paidContent: funnel?.paidContent ?? "tool_footer_paid",
+    freeLabel: funnel?.freeLabel ?? "Get the free red-flag checklist",
+    freeContent: funnel?.freeContent ?? "tool_footer_free",
+  };
+
   return (
     <>
       <header className="site-header">
@@ -46,29 +68,26 @@ export function ToolChrome({
         {children}
         <section className="tool-funnel">
           <div>
-            <p className="kicker">NEED THE COMPLETE SYSTEM?</p>
-            <h2>Use one decision process across every project.</h2>
-            <p>
-              Worth the Work includes the editable 20-project workbook and 24
-              client-ready counteroffer, scope, deposit, and decline scripts.
-            </p>
+            <p className="kicker">{funnelCopy.kicker}</p>
+            <h2>{funnelCopy.title}</h2>
+            <p>{funnelCopy.description}</p>
           </div>
           <div className="tool-funnel-actions">
             <TrackedOfferLink
               className="checkout-link"
               offer="paid"
               medium="tool"
-              content="tool_footer_paid"
+              content={funnelCopy.paidContent}
             >
-              Get the $19 Decision Kit
+              {funnelCopy.paidLabel}
             </TrackedOfferLink>
             <TrackedOfferLink
               className="secondary-offer-link"
               offer="free"
               medium="tool"
-              content="tool_footer_free"
+              content={funnelCopy.freeContent}
             >
-              Get the free red-flag checklist
+              {funnelCopy.freeLabel}
             </TrackedOfferLink>
           </div>
         </section>
