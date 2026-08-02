@@ -21,8 +21,9 @@ check the arithmetic before using the result.
 | [Freelance quote response generator](https://rookepoole.github.io/worth-the-work/freelance-quote-response-generator/) | How should a freelancer respond to a client quote? | Editable accept, counteroffer, clarify, or decline response |
 | [Freelance rush-fee calculator](https://rookepoole.github.io/worth-the-work/freelance-rush-fee-calculator/) | What premium covers compressed delivery and disruption? | Rush premium, accelerated quote, and client explanation |
 | [Freelance late-payment fee calculator](https://rookepoole.github.io/worth-the-work/freelance-late-payment-calculator/) | What do the written terms add to an overdue invoice? | Simple interest, grace-period and flat-fee treatment, updated balance, delayed-cash cost, and factual reminder |
+| [Freelance overdue-invoice email generator](https://rookepoole.github.io/worth-the-work/freelance-overdue-invoice-email-generator/) | What should a freelancer send after silence, a missed promise, partial payment, or an invoice dispute? | A factual subject and follow-up email matched to the client's current payment state |
 
-All seven tools support USD, EUR, GBP, CAD, AUD, and NZD without pretending to
+All eight tools support USD, EUR, GBP, CAD, AUD, and NZD without pretending to
 perform currency conversion.
 
 ## How the main project decision calculator works
@@ -55,8 +56,9 @@ applicable law.
 The calculators are free and complete. Freelancers who want editable working
 files can also use the separate resources below:
 
-- [Free freelance project red-flag checklist](https://prairiegrantscout.gumroad.com/l/freelance-project-red-flag-checklist?utm_source=github&utm_medium=repository&utm_campaign=worth_the_work&utm_content=readme_free)
-- [Worth the Work decision workbook and 24-script client library](https://prairiegrantscout.gumroad.com/l/worth-the-work?utm_source=github&utm_medium=repository&utm_campaign=worth_the_work&utm_content=readme_paid)
+- [Free invoice follow-up starter sheet](https://prairiegrantscout.gumroad.com/l/freelance-invoice-follow-up-starter?utm_source=github&utm_medium=repository&utm_campaign=worth_the_work&utm_content=readme_followup_starter)
+- [Invoice Recovery Pack with 13 follow-up messages and a 100-row tracker](https://prairiegrantscout.gumroad.com/l/freelance-invoice-recovery-pack?utm_source=github&utm_medium=repository&utm_campaign=worth_the_work&utm_content=readme_recovery_pack)
+- [Worth the Work decision workbook and 24-script client library](https://prairiegrantscout.gumroad.com/l/worth-the-work?utm_source=github&utm_medium=repository&utm_campaign=worth_the_work&utm_content=readme_decision_kit)
 
 ## Local development
 
