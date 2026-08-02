@@ -53,12 +53,13 @@ export default function LatePaymentPage() {
       title="Calculate the balance before you chase the payment."
       description="Apply only the written rate and fee you are permitted to use, measure the business cost of waiting, and copy a calm payment reminder."
       funnel={{
-        kicker: "FOUR PAYMENT-DELAY SCRIPTS INCLUDED",
-        title: "Use the next message without improvising.",
+        kicker: "13-STAGE INVOICE RECOVERY SYSTEM",
+        title: "Track the invoice. Send the next message.",
         description:
-          "The Decision Kit includes ready-to-send language for long payment terms, pre-due reminders, overdue invoices, and pausing work for nonpayment—plus the editable 20-project workbook and 20 more client scripts.",
-        paidLabel: "Get the 24-script Decision Kit — $19",
-        paidContent: "late_payment_footer_paid",
+          "The Invoice Recovery Pack pairs 13 calm-to-firm payment messages with a formula-driven 100-row tracker, aging dashboard, follow-up dates, promise-to-pay records, and an editable escalation cadence.",
+        paidOffer: "recovery",
+        paidLabel: "Get the Invoice Recovery Pack — $9",
+        paidContent: "late_payment_recovery_pack",
         freeLabel: "Start with the free project red-flag checklist",
         freeContent: "late_payment_footer_free",
       }}

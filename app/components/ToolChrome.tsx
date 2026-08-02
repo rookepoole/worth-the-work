@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import type { Offer } from "../lib/offerAttribution";
 import { TrackedOfferLink } from "./TrackedOfferLink";
 
 export function ToolChrome({
@@ -16,6 +17,7 @@ export function ToolChrome({
     kicker?: string;
     title?: string;
     description?: string;
+    paidOffer?: Offer;
     paidLabel?: string;
     paidContent?: string;
     freeLabel?: string;
@@ -29,6 +31,7 @@ export function ToolChrome({
     description:
       funnel?.description ??
       "Worth the Work includes the editable 20-project workbook and 24 client-ready counteroffer, scope, deposit, payment-delay, decline, and follow-up scripts.",
+    paidOffer: funnel?.paidOffer ?? "paid",
     paidLabel: funnel?.paidLabel ?? "Get the $19 Decision Kit",
     paidContent: funnel?.paidContent ?? "tool_footer_paid",
     freeLabel: funnel?.freeLabel ?? "Get the free red-flag checklist",
@@ -75,7 +78,7 @@ export function ToolChrome({
           <div className="tool-funnel-actions">
             <TrackedOfferLink
               className="checkout-link"
-              offer="paid"
+              offer={funnelCopy.paidOffer}
               medium="tool"
               content={funnelCopy.paidContent}
             >

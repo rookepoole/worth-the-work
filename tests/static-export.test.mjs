@@ -63,6 +63,10 @@ test("classifies acquisition referrers without collecting page inputs", () => {
     buildOfferUrl({ offer: "paid", source: "public_tools", medium: "calculator", content: "paid_kit_cta" }),
     /utm_source=public_tools/,
   );
+  assert.match(
+    buildOfferUrl({ offer: "recovery", source: "organic_search", medium: "tool", content: "late_payment_recovery_pack" }),
+    /freelance-invoice-recovery-pack\?utm_source=organic_search/,
+  );
 });
 
 test("exports six distinct conversion-focused utility pages", async () => {
@@ -105,10 +109,10 @@ test("exports six distinct conversion-focused utility pages", async () => {
     new URL("freelance-late-payment-calculator/index.html", outputRoot),
     "utf8",
   );
-  assert.match(latePayment, /FOUR PAYMENT-DELAY SCRIPTS INCLUDED/);
-  assert.match(latePayment, /long payment terms/);
-  assert.match(latePayment, /pausing work for nonpayment/);
-  assert.match(latePayment, /utm_content=late_payment_footer_paid/);
+  assert.match(latePayment, /13-STAGE INVOICE RECOVERY SYSTEM/);
+  assert.match(latePayment, /formula-driven 100-row tracker/);
+  assert.match(latePayment, /freelance-invoice-recovery-pack/);
+  assert.match(latePayment, /utm_content=late_payment_recovery_pack/);
 });
 
 test("project estimator protects labor, direct costs, contingency, and margin", () => {
