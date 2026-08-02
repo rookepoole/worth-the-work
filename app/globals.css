@@ -281,6 +281,7 @@ footer > p { font-size: 13px; text-align: center; }
 .tool-script { border: 1px solid #555; margin-top: 24px; padding: 18px; }
 .tool-script > span { color: var(--lime); font-family: var(--font-geist-mono), monospace; font-size: 9px; letter-spacing: .08em; }
 .tool-script p { color: var(--cream); font-size: 12px; line-height: 1.6; margin: 12px 0 0; }
+.tool-email-body { white-space: pre-line; }
 .tool-funnel { align-items: center; background: var(--violet); color: white; display: grid; gap: 42px; grid-template-columns: 1fr 360px; margin: 0 max(72px, calc((100vw - 1296px) / 2)); padding: 46px; }
 .tool-funnel h2 { font-size: clamp(34px, 4vw, 52px); letter-spacing: -.045em; line-height: 1; margin: 0 0 14px; }
 .tool-funnel p:not(.kicker) { color: #dfd9ff; font-size: 14px; line-height: 1.55; max-width: 720px; }

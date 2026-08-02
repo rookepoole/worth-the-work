@@ -62,6 +62,7 @@ jobs:
                 "https://rookepoole.github.io/worth-the-work/freelance-revision-cost-calculator/",
                 "https://rookepoole.github.io/worth-the-work/freelance-quote-response-generator/",
                 "https://rookepoole.github.io/worth-the-work/freelance-rush-fee-calculator/",
-                "https://rookepoole.github.io/worth-the-work/freelance-late-payment-calculator/"
+                "https://rookepoole.github.io/worth-the-work/freelance-late-payment-calculator/",
+                "https://rookepoole.github.io/worth-the-work/freelance-overdue-invoice-email-generator/"
               ]
             }'

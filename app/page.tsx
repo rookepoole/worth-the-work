@@ -461,6 +461,12 @@ export default function Home() {
             <p>Calculate simple interest and written fees, measure the hidden cash-flow cost, and copy a factual reminder.</p>
             <strong>Update the balance →</strong>
           </Link>
+          <Link href="/freelance-overdue-invoice-email-generator/">
+            <span>PAYMENT FOLLOW-UP</span>
+            <h3>Overdue invoice email generator</h3>
+            <p>Write the next message for silence, a missed promise, partial payment, or an invoice question.</p>
+            <strong>Write the follow-up →</strong>
+          </Link>
         </div>
       </section>
 

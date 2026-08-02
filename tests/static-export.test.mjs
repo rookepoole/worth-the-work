@@ -12,6 +12,7 @@ import {
 } from "../app/lib/rushFee.ts";
 import { calculateLatePayment } from "../app/lib/latePayment.ts";
 import { calculateProjectCost } from "../app/lib/projectCost.ts";
+import { generateOverdueInvoiceEmail } from "../app/lib/overdueInvoiceEmail.ts";
 
 const outputRoot = new URL("../out/", import.meta.url);
 
@@ -69,7 +70,7 @@ test("classifies acquisition referrers without collecting page inputs", () => {
   );
 });
 
-test("exports six distinct conversion-focused utility pages", async () => {
+test("exports seven distinct conversion-focused utility pages", async () => {
   const tools = [
     ["freelance-project-cost-calculator/index.html", /A fixed fee still needs an honest cost model/],
     ["scope-creep-clause-generator/index.html", /Define the boundary before you need to defend it/],
@@ -77,6 +78,7 @@ test("exports six distinct conversion-focused utility pages", async () => {
     ["freelance-quote-response-generator/index.html", /If the price changes, another real variable should change too/],
     ["freelance-rush-fee-calculator/index.html", /Price urgency as capacity, not as annoyance/],
     ["freelance-late-payment-calculator/index.html", /Calculate what the terms say/],
+    ["freelance-overdue-invoice-email-generator/index.html", /Get more specific before you get more severe/],
   ];
 
   for (const [path, title] of tools) {
@@ -104,6 +106,7 @@ test("exports six distinct conversion-focused utility pages", async () => {
   assert.match(sitemap, /freelance-quote-response-generator/);
   assert.match(sitemap, /freelance-rush-fee-calculator/);
   assert.match(sitemap, /freelance-late-payment-calculator/);
+  assert.match(sitemap, /freelance-overdue-invoice-email-generator/);
 
   const latePayment = await readFile(
     new URL("freelance-late-payment-calculator/index.html", outputRoot),
@@ -113,6 +116,58 @@ test("exports six distinct conversion-focused utility pages", async () => {
   assert.match(latePayment, /formula-driven 100-row tracker/);
   assert.match(latePayment, /freelance-invoice-recovery-pack/);
   assert.match(latePayment, /utm_content=late_payment_recovery_pack/);
+
+  const overdueEmail = await readFile(
+    new URL("freelance-overdue-invoice-email-generator/index.html", outputRoot),
+    "utf8",
+  );
+  assert.match(overdueEmail, /NEED THE COMPLETE RECOVERY SEQUENCE/);
+  assert.match(overdueEmail, /13 calm-to-firm messages/);
+  assert.match(overdueEmail, /freelance-invoice-recovery-pack/);
+  assert.match(overdueEmail, /utm_content=overdue_email_recovery_pack/);
+});
+
+test("overdue email generator changes the ask when the payment state changes", () => {
+  const base = {
+    clientName: "Morgan",
+    senderName: "Riley",
+    invoiceReference: "INV-042",
+    invoiceAmount: 2500,
+    currency: "USD",
+    daysOverdue: 8,
+    promisedDate: "Friday",
+    partialPaymentAmount: 1000,
+    issueSummary: "the final revision hours",
+  };
+
+  const silent = generateOverdueInvoiceEmail({
+    ...base,
+    followUpState: "no_response",
+  });
+  assert.equal(silent.stage, "Direct follow-up");
+  assert.match(silent.subject, /Payment date needed/);
+  assert.match(silent.body, /scheduled payment date today/);
+
+  const missedPromise = generateOverdueInvoiceEmail({
+    ...base,
+    followUpState: "promised_missed",
+  });
+  assert.match(missedPromise.body, /confirmed payment for Friday/);
+  assert.match(missedPromise.body, /new payment date/);
+
+  const partial = generateOverdueInvoiceEmail({
+    ...base,
+    followUpState: "partial_payment",
+  });
+  assert.match(partial.body, /\$1,000\.00 payment/);
+  assert.match(partial.body, /\$1,500\.00/);
+
+  const disputed = generateOverdueInvoiceEmail({
+    ...base,
+    followUpState: "question_or_dispute",
+  });
+  assert.match(disputed.body, /final revision hours/);
+  assert.match(disputed.body, /portion.*not in question/);
 });
 
 test("project estimator protects labor, direct costs, contingency, and margin", () => {

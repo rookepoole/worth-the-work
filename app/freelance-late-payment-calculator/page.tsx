@@ -148,6 +148,9 @@ export default function LatePaymentPage() {
 
         <aside className="tool-related" aria-label="Related freelance tools">
           <strong>Prevent the next payment problem:</strong>
+          <Link href="/freelance-overdue-invoice-email-generator/">
+            Write the next overdue-invoice email
+          </Link>
           <Link href="/freelance-project-cost-calculator/">
             Price admin time and cash-flow risk into the quote
           </Link>
