@@ -7,6 +7,7 @@ import {
 import {
   buildOfferUrl,
   sourceFromReferrer,
+  sourceFromSearch,
   type Offer,
 } from "../lib/offerAttribution";
 
@@ -32,7 +33,8 @@ export function TrackedOfferLink({
       {...anchorProps}
       href={href}
       onClick={(event) => {
-        const source = sourceFromReferrer(document.referrer, defaultSource);
+        const referrerSource = sourceFromReferrer(document.referrer, defaultSource);
+        const source = sourceFromSearch(window.location.search, referrerSource);
         event.currentTarget.href = buildOfferUrl({ offer, source, medium, content });
         onClick?.(event);
       }}

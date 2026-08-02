@@ -33,6 +33,14 @@ export function sourceFromReferrer(referrer: string, fallback: string) {
   }
 }
 
+export function sourceFromSearch(search: string, fallback: string) {
+  const source = new URLSearchParams(search).get("utm_source")?.trim().toLowerCase();
+
+  return source && /^[a-z0-9][a-z0-9_-]{0,63}$/.test(source)
+    ? source
+    : fallback;
+}
+
 export function buildOfferUrl({
   offer,
   source,

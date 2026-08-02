@@ -106,7 +106,8 @@ export function ToolChrome({
           <a href="https://github.com/rookepoole/worth-the-work">
             Open-source MIT code
           </a>
-          .
+          . {" "}
+          <Link href="/affiliate-program/">Affiliate program</Link>.
         </p>
       </main>
     </>

@@ -65,6 +65,15 @@ files can also use the separate resources below:
 - [Invoice Recovery Pack with 13 follow-up messages and a 100-row tracker](https://prairiegrantscout.gumroad.com/l/freelance-invoice-recovery-pack?utm_source=github&utm_medium=repository&utm_campaign=worth_the_work&utm_content=readme_recovery_pack)
 - [Worth the Work decision workbook and 24-script client library](https://prairiegrantscout.gumroad.com/l/worth-the-work?utm_source=github&utm_medium=repository&utm_campaign=worth_the_work&utm_content=readme_decision_kit)
 
+## Affiliate program
+
+Freelance educators, bookkeeping creators, consultants, and publishers can
+[apply to the Worth the Work affiliate program](https://rookepoole.github.io/worth-the-work/affiliate-program/).
+Approved direct affiliates receive a 30% commission on qualifying sales of the
+$9 Invoice Recovery Pack and $19 Decision Kit. Gumroad manages attribution and
+payouts under its current affiliate rules; approval and earnings are never
+guaranteed.
+
 ## Local development
 
 Requires Node.js 22.13 or later.

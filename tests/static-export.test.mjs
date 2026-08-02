@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   buildOfferUrl,
   sourceFromReferrer,
+  sourceFromSearch,
 } from "../app/lib/offerAttribution.ts";
 import {
   calculateRushFee,
@@ -60,6 +61,8 @@ test("classifies acquisition referrers without collecting page inputs", () => {
   assert.equal(sourceFromReferrer("https://prairiegrantscout.gumroad.com/p/how-to-calculate-your-minimum-freelance-project-fee-without-guessing", "github_pages"), "gumroad_post");
   assert.equal(sourceFromReferrer("https://github.com/etnbrd/awesome-freelance-fr", "github_pages"), "github_referral");
   assert.equal(sourceFromReferrer("https://example.com/", "github_pages"), "github_pages");
+  assert.equal(sourceFromSearch("?utm_source=gumroad_affiliate", "github_pages"), "gumroad_affiliate");
+  assert.equal(sourceFromSearch("?utm_source=%3Cscript%3E", "github_pages"), "github_pages");
   assert.match(
     buildOfferUrl({ offer: "paid", source: "public_tools", medium: "calculator", content: "paid_kit_cta" }),
     /utm_source=public_tools/,
@@ -112,6 +115,7 @@ test("exports seven distinct conversion-focused utility pages", async () => {
   assert.match(sitemap, /freelance-late-payment-calculator/);
   assert.match(sitemap, /freelance-overdue-invoice-email-generator/);
   assert.match(sitemap, /freelance-invoice-follow-up-schedule/);
+  assert.match(sitemap, /affiliate-program/);
 
   const latePayment = await readFile(
     new URL("freelance-late-payment-calculator/index.html", outputRoot),
@@ -135,6 +139,22 @@ test("exports seven distinct conversion-focused utility pages", async () => {
 
   assert.match(latePayment, /freelance-invoice-follow-up-starter/);
   assert.match(latePayment, /utm_content=late_payment_followup_starter/);
+});
+
+test("exports a transparent direct-affiliate program", async () => {
+  const html = await readFile(
+    new URL("affiliate-program/index.html", outputRoot),
+    "utf8",
+  );
+
+  assert.match(html, /30% direct commission/);
+  assert.match(html, /30-day attribution window/);
+  assert.match(html, /prairiegrantscout\.gumroad\.com\/affiliates/);
+  assert.match(html, /approval and earnings are not guaranteed/i);
+  assert.match(html, /affiliates-on-gumroad/);
+  assert.match(html, /"@type":"FAQPage"/);
+  assert.match(html, /property="og:type" content="website"/);
+  assert.doesNotMatch(html, /ÃƒÂ¢|ÃƒÆ’|Ãƒâ€š/);
 });
 
 test("exports a state-aware invoice follow-up schedule pillar", async () => {
