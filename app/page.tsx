@@ -467,6 +467,12 @@ export default function Home() {
             <p>Write the next message for silence, a missed promise, partial payment, or an invoice question.</p>
             <strong>Write the follow-up →</strong>
           </Link>
+          <Link href="/freelance-invoice-follow-up-schedule/">
+            <span>FOLLOW-UP PLAN</span>
+            <h3>Invoice follow-up schedule</h3>
+            <p>Use a day-based cadence, then change the ask after a promise, partial payment, or dispute.</p>
+            <strong>Plan the follow-up →</strong>
+          </Link>
         </div>
       </section>
 

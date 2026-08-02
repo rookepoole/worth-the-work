@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["freelance-rush-fee-calculator/", 0.9],
     ["freelance-late-payment-calculator/", 0.9],
     ["freelance-overdue-invoice-email-generator/", 0.9],
+    ["freelance-invoice-follow-up-schedule/", 0.85],
   ].map(([path, priority]) => ({
     url: `https://rookepoole.github.io/worth-the-work/${path}`,
     lastModified,

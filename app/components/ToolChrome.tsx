@@ -7,12 +7,16 @@ export function ToolChrome({
   eyebrow,
   title,
   description,
+  formatLabel = "Free browser tool",
+  features = ["No signup", "Private in your browser", "Copy-ready output"],
   funnel,
   children,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  formatLabel?: string;
+  features?: readonly [string, string, string];
   funnel?: {
     kicker?: string;
     title?: string;
@@ -61,13 +65,11 @@ export function ToolChrome({
       </header>
       <main className="tool-page">
         <section className="tool-hero">
-          <p className="eyebrow"><span>{eyebrow}</span> Free browser tool</p>
+          <p className="eyebrow"><span>{eyebrow}</span> {formatLabel}</p>
           <h1>{title}</h1>
           <p>{description}</p>
           <div className="trust-row" aria-label="Tool features">
-            <span>No signup</span>
-            <span>Private in your browser</span>
-            <span>Copy-ready output</span>
+            {features.map((feature) => <span key={feature}>{feature}</span>)}
           </div>
         </section>
         {children}

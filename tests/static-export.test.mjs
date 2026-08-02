@@ -111,6 +111,7 @@ test("exports seven distinct conversion-focused utility pages", async () => {
   assert.match(sitemap, /freelance-rush-fee-calculator/);
   assert.match(sitemap, /freelance-late-payment-calculator/);
   assert.match(sitemap, /freelance-overdue-invoice-email-generator/);
+  assert.match(sitemap, /freelance-invoice-follow-up-schedule/);
 
   const latePayment = await readFile(
     new URL("freelance-late-payment-calculator/index.html", outputRoot),
@@ -134,6 +135,29 @@ test("exports seven distinct conversion-focused utility pages", async () => {
 
   assert.match(latePayment, /freelance-invoice-follow-up-starter/);
   assert.match(latePayment, /utm_content=late_payment_followup_starter/);
+});
+
+test("exports a state-aware invoice follow-up schedule pillar", async () => {
+  const html = await readFile(
+    new URL("freelance-invoice-follow-up-schedule/index.html", outputRoot),
+    "utf8",
+  );
+
+  assert.match(html, /Days determine when to check/);
+  assert.match(html, /State determines what to ask/);
+  assert.match(html, /1–3 DAYS OVERDUE/);
+  assert.match(html, /Promised date missed/);
+  assert.match(html, /Partial payment received/);
+  assert.match(html, /freelance-overdue-invoice-email-generator/);
+  assert.match(html, /freelance-invoice-recovery-pack/);
+  assert.match(html, /utm_content=followup_schedule_recovery_pack/);
+  assert.match(html, /freelance-invoice-follow-up-starter/);
+  assert.match(html, /utm_content=followup_schedule_starter/);
+  assert.match(html, /"@type":"Article"/);
+  assert.match(html, /"@type":"FAQPage"/);
+  assert.match(html, /property="og:type" content="article"/);
+  assert.match(html, /name="twitter:card" content="summary_large_image"/);
+  assert.doesNotMatch(html, /Ã¢|Ãƒ|Ã‚/);
 });
 
 test("overdue email generator changes the ask when the payment state changes", () => {

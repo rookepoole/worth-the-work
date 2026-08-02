@@ -26,6 +26,11 @@ check the arithmetic before using the result.
 All eight tools support USD, EUR, GBP, CAD, AUD, and NZD without pretending to
 perform currency conversion.
 
+Need a repeatable collection cadence? Use the
+[freelance invoice follow-up schedule](https://rookepoole.github.io/worth-the-work/freelance-invoice-follow-up-schedule/)
+to choose a checkpoint, then switch the message after a promise, partial
+payment, or dispute.
+
 ## How the main project decision calculator works
 
 The main calculator combines delivery hours, meetings, administration,
